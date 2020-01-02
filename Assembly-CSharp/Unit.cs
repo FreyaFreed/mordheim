@@ -5107,6 +5107,29 @@ public class Unit
 		return num;
 	}
 
+	public void ResetUnitSkills()
+	{
+		for (int i = this.ActiveSkills.Count - 1; i >= 0; i--)
+		{
+			global::SkillData skillData = this.ActiveSkills[i];
+			if (skillData.SkillIdPrerequiste != global::SkillId.NONE || skillData.SkillQualityId != global::SkillQualityId.MASTER_QUALITY)
+			{
+				this.UnitSave.activeSkills.Remove(skillData.Id);
+				this.ActiveSkills.RemoveAt(i);
+			}
+		}
+		for (int j = this.PassiveSkills.Count - 1; j >= 0; j--)
+		{
+			global::SkillData skillData2 = this.PassiveSkills[j];
+			if (skillData2.SkillIdPrerequiste != global::SkillId.NONE || skillData2.SkillQualityId != global::SkillQualityId.MASTER_QUALITY)
+			{
+				this.UnitSave.passiveSkills.Remove(skillData2.Id);
+				this.PassiveSkills.RemoveAt(j);
+			}
+		}
+		this.spentSkillPoints = 0;
+	}
+
 	public static readonly global::AttributeId[] PhysicalAttributeIds = new global::AttributeId[]
 	{
 		global::AttributeId.STRENGTH,
