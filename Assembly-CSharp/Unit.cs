@@ -5115,6 +5115,10 @@ public class Unit
 			if (skillData.SkillIdPrerequiste != global::SkillId.NONE || skillData.SkillQualityId != global::SkillQualityId.MASTER_QUALITY)
 			{
 				this.UnitSave.activeSkills.Remove(skillData.Id);
+				if (skillData.SkillIdPrerequiste != global::SkillId.NONE)
+				{
+					this.UnitSave.activeSkills.Remove(skillData.SkillIdPrerequiste);
+				}
 				this.ActiveSkills.RemoveAt(i);
 			}
 		}
@@ -5124,6 +5128,10 @@ public class Unit
 			if (skillData2.SkillIdPrerequiste != global::SkillId.NONE || skillData2.SkillQualityId != global::SkillQualityId.MASTER_QUALITY)
 			{
 				this.UnitSave.passiveSkills.Remove(skillData2.Id);
+				if (skillData2.SkillIdPrerequiste != global::SkillId.NONE)
+				{
+					this.UnitSave.activeSkills.Remove(skillData2.SkillIdPrerequiste);
+				}
 				this.PassiveSkills.RemoveAt(j);
 			}
 		}
