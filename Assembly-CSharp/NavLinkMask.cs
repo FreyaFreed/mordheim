@@ -1,0 +1,14 @@
+﻿using System;
+
+public enum NavLinkMask
+{
+	BASIC_GROUND,
+	CLIMB,
+	JUMP,
+	LEAP,
+	LARGE_CLIMB,
+	LARGE_JUMP,
+	LARGE_LEAP,
+	LARGE_UNIT = 113,
+	NORMAL_UNIT = 127
+}

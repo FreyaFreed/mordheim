@@ -1,0 +1,13 @@
+﻿using System;
+
+public enum PropRestrictionId
+{
+	NONE,
+	PROC_PROPS_01,
+	PROC_BARRICADES_01,
+	PROC_MADSTUFF_01,
+	CAMP_PROPS_01,
+	CAMP_BARRICADES_01,
+	CAMP_MADSTUFF_01,
+	MAX_VALUE
+}

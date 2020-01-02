@@ -1,0 +1,25 @@
+﻿using System;
+
+public enum AssetBundleId
+{
+	NONE,
+	BUILDINGS,
+	GROUNDS_SCENE,
+	PROPS_SCENE,
+	PROPS,
+	CLOUDS,
+	SCENE_PREFABS,
+	MER,
+	SKA,
+	SIS,
+	POS = 11,
+	MON,
+	EQUIPMENTS,
+	BUILDINGS_SCENE = 20,
+	WIT,
+	SOUNDS = 23,
+	FX,
+	UND,
+	LOADING,
+	MAX_VALUE
+}

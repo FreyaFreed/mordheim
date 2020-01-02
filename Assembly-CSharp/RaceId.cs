@@ -1,0 +1,19 @@
+﻿using System;
+
+public enum RaceId
+{
+	NONE,
+	HUMAN,
+	SKAVEN,
+	RAT_OGRE,
+	POSSESSED = 12,
+	OGRE,
+	CHAOS_SPAWN = 23,
+	DAEMON,
+	CHAOS_OGRE,
+	CURATOR,
+	ALLURESS,
+	HUMAN_IMPRESSIVE,
+	UNDEAD,
+	MAX_VALUE
+}

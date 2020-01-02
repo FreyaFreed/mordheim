@@ -1,0 +1,21 @@
+﻿using System;
+
+public enum UnitSlotId
+{
+	HELMET,
+	ARMOR,
+	SET1_MAINHAND,
+	SET1_OFFHAND,
+	SET2_MAINHAND,
+	SET2_OFFHAND,
+	ITEM_1,
+	ITEM_2,
+	ITEM_3,
+	ITEM_4,
+	ITEM_5,
+	ITEM_6,
+	ITEM_7,
+	NB_SLOTS,
+	NONE = 99,
+	MAX_VALUE
+}

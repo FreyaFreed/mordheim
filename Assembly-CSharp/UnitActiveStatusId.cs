@@ -1,0 +1,12 @@
+﻿using System;
+
+public enum UnitActiveStatusId
+{
+	AVAILABLE,
+	INJURED,
+	UPKEEP_NOT_PAID,
+	IN_TRAINING,
+	TREATMENT_NOT_PAID,
+	INJURED_AND_UPKEEP_NOT_PAID,
+	MAX_VALUE
+}

@@ -1,0 +1,22 @@
+﻿using System;
+
+public enum UnitRigId
+{
+	NONE,
+	MER,
+	MER_OGRE,
+	SKA,
+	SKA_OGRE,
+	SIS,
+	PLAGUEBEARER,
+	BLOODLETTER,
+	POS_POS,
+	POS_SPAWN,
+	HORROR,
+	DAEMONETTE,
+	MANTICORE,
+	WIT,
+	WIT_EXECUTIONER,
+	UND_GHOUL,
+	MAX_VALUE
+}
