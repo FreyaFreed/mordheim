@@ -1,6 +1,6 @@
 # mordheim
 
-Code in this repository is a decompile of Assembly-CSharp.dll of the game Mordheim: City of the Damned. As such all in the master branch is © Rogue Factor and any Warhammer related content in the code is © Games Workshop.
+Code in this repository is a decompile of Assembly-CSharp.dll of the game Mordheim: City of the Damned. As such all code in the master branch is © Rogue Factor and any Warhammer related content found in the code is ™ Games Workshop.
 
 The intent of this repository is unofficial modding of the Mordheim: City of the Damned game, as Rogue Factor has stopped development, and while the game is great it has many bugs and flaws that need addressing.
 
