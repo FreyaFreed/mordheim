@@ -116,18 +116,17 @@ public class HideoutSkills : global::BaseHideoutUnitState
 			global::PandoraSingleton<global::HideoutTabManager>.Instance.button2.SetAction("action", "menu_select_slot", 0, false, null, null);
 			global::PandoraSingleton<global::HideoutTabManager>.Instance.button2.OnAction(null, false, true);
 			base.SetupApplyButton(global::PandoraSingleton<global::HideoutTabManager>.Instance.button3);
-			global::PandoraSingleton<global::HideoutTabManager>.Instance.button4.gameObject.SetActive(false);
+			global::PandoraSingleton<global::HideoutTabManager>.Instance.button4.SetAction("action", "menu_select_slot", 0, false, null, null);
+			global::PandoraSingleton<global::HideoutTabManager>.Instance.button4.OnAction(new global::UnityEngine.Events.UnityAction(this.OnRespecButton), false, true);
 			global::PandoraSingleton<global::HideoutTabManager>.Instance.button5.gameObject.SetActive(false);
+			return;
 		}
-		else
-		{
-			global::PandoraSingleton<global::HideoutTabManager>.Instance.button1.SetAction("cancel", "menu_return_select_slot", 0, false, global::PandoraSingleton<global::HideoutTabManager>.Instance.icnBack, null);
-			global::PandoraSingleton<global::HideoutTabManager>.Instance.button1.OnAction(new global::UnityEngine.Events.UnityAction(this.ReturnSelectSlot), false, true);
-			base.SetupApplyButton(global::PandoraSingleton<global::HideoutTabManager>.Instance.button2);
-			global::PandoraSingleton<global::HideoutTabManager>.Instance.button3.gameObject.SetActive(false);
-			global::PandoraSingleton<global::HideoutTabManager>.Instance.button4.gameObject.SetActive(false);
-			global::PandoraSingleton<global::HideoutTabManager>.Instance.button5.gameObject.SetActive(false);
-		}
+		global::PandoraSingleton<global::HideoutTabManager>.Instance.button1.SetAction("cancel", "menu_return_select_slot", 0, false, global::PandoraSingleton<global::HideoutTabManager>.Instance.icnBack, null);
+		global::PandoraSingleton<global::HideoutTabManager>.Instance.button1.OnAction(new global::UnityEngine.Events.UnityAction(this.ReturnSelectSlot), false, true);
+		base.SetupApplyButton(global::PandoraSingleton<global::HideoutTabManager>.Instance.button2);
+		global::PandoraSingleton<global::HideoutTabManager>.Instance.button3.gameObject.SetActive(false);
+		global::PandoraSingleton<global::HideoutTabManager>.Instance.button4.gameObject.SetActive(false);
+		global::PandoraSingleton<global::HideoutTabManager>.Instance.button5.gameObject.SetActive(false);
 	}
 
 	private void SetButtonsAttributeSelection()
@@ -290,6 +289,26 @@ public class HideoutSkills : global::BaseHideoutUnitState
 		if (this.selectedSkill != null)
 		{
 			this.OnSkillConfirmed(-1, false, this.selectedSkill);
+		}
+	}
+
+	private void OnRespecButton()
+	{
+		global::PandoraSingleton<global::HideoutManager>.Instance.messagePopup.ShowLocalized(global::PandoraSingleton<global::LocalizationManager>.Instance.GetStringById("popup_learn_skill_title"), global::PandoraSingleton<global::LocalizationManager>.Instance.GetStringById("popup_learn_skill_desc", new string[]
+		{
+			this.currentUnit.unit.Name
+		}), new global::System.Action<bool>(this.OnRespecPopup), false, false);
+	}
+
+	private void OnRespecPopup(bool confirm)
+	{
+		if (confirm)
+		{
+			this.currentUnit.unit.ResetUnitSkills();
+			this.UpdateWheel();
+			global::PandoraSingleton<global::HideoutManager>.Instance.SaveChanges();
+			base.RefreshUnitAttributes();
+			this.skillsModule.Refresh(this.showSpell);
 		}
 	}
 
