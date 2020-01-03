@@ -325,7 +325,9 @@ public class WarbandMenuController
 			{
 				if ((unitId != global::UnitId.SMUGGLER || global::PandoraSingleton<global::Hephaestus>.Instance.OwnsDLC(global::Hephaestus.DlcId.SMUGGLER)) && (unitId != global::UnitId.GLOBADIER || global::PandoraSingleton<global::Hephaestus>.Instance.OwnsDLC(global::Hephaestus.DlcId.GLOBADIER)) && (unitId != global::UnitId.PRIEST_OF_ULRIC || global::PandoraSingleton<global::Hephaestus>.Instance.OwnsDLC(global::Hephaestus.DlcId.PRIEST_OF_ULRIC)) && (unitId != global::UnitId.DOOMWEAVER || global::PandoraSingleton<global::Hephaestus>.Instance.OwnsDLC(global::Hephaestus.DlcId.DOOMWEAVER)))
 				{
-					global::Unit unit = global::Unit.GenerateHireUnit(unitId, 0, 0);
+					int rank = this.Warband.Rank;
+					Unit unit = Unit.GenerateHireUnit(unitId, 0, rank);				
+					
 					this.asyncQueue++;
 					int index = j;
 					global::PandoraSingleton<global::GameManager>.Instance.StartCoroutine(global::UnitMenuController.LoadUnitPrefabAsync(unit, delegate(global::UnityEngine.GameObject go)
