@@ -247,6 +247,10 @@ public class UnitFactory : global::PandoraSingleton<global::UnitFactory>
 		global::System.Collections.Generic.List<global::UnitJoinCombatStyleData> list2 = new global::System.Collections.Generic.List<global::UnitJoinCombatStyleData>();
 		bool flag = unit.GetMutationId(global::UnitSlotId.SET1_MAINHAND) != global::MutationId.NONE;
 		bool flag2 = unit.GetMutationId(global::UnitSlotId.SET1_OFFHAND) != global::MutationId.NONE || unit.GetInjury(global::UnitSlotId.SET1_OFFHAND) != global::InjuryId.NONE;
+		if (!flag && !flag2)
+		{
+			excludedCombatStyleId = CombatStyleId.NONE;
+		}		
 		for (int i = 0; i < list.Count; i++)
 		{
 			if (list[i].CombatStyleId != excludedCombatStyleId)
