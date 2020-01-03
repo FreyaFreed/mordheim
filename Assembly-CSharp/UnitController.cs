@@ -106,7 +106,6 @@ public class UnitController : global::UnitMenuController, global::IMyrtilus
 
 	public bool Fleeing { get; set; }
 
-	public bool TurnStarted { get; set; }
 
 	public bool Resurected { get; private set; }
 
@@ -396,7 +395,11 @@ public class UnitController : global::UnitMenuController, global::IMyrtilus
 					this.unit.AddEnchantment(global::PandoraSingleton<global::DataFactory>.Instance.InitData<global::ProcMissionRatingData>(global::PandoraSingleton<global::MissionStartData>.Instance.CurrentMission.missionSave.ratingId).EnchantmentId, this.unit, false, false, global::AllegianceId.NONE);
 				}
 				if (this.unit.UnitSave.campaignId != 0)
-				{
+				{int num3 = 970;
+					num3 += this.unit.Rank;
+					this.unit.AddEnchantment((EnchantmentId)num3, this.unit, false, false, AllegianceId.NONE);
+					this.unit.AddEnchantment(PandoraSingleton<DataFactory>.Instance.InitData<ProcMissionRatingData>(PandoraSingleton<MissionStartData>.Instance.CurrentMission.missionSave.ratingId).EnchantmentId, this.unit, false, false, AllegianceId.NONE);
+				
 					this.unit.AddEnchantment(global::EnchantmentId.PERK_NO_SEARCH, this.unit, false, false, global::AllegianceId.NONE);
 				}
 			}
