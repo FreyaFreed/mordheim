@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -395,22 +395,20 @@ public class WarbandSwapModule : global::WarbandSlotPlacementModule
 			if (!(uiunitSlot == null) && !uiunitSlot.isLocked)
 			{
 				if (cannotSwapIndex.Contains(i) || (isImpressive && i < 12 + this.reserveSlots.Length) || (fromSlotIndex >= 12 + this.reserveSlots.Length && unitAtWarbandSlot != null && unitAtWarbandSlot.IsImpressive))
-				{
-					{
-						if (uiunitSlot.currentUnitAtSlot == null)
-						{
-							uiunitSlot.icon.color = global::UnityEngine.Color.white;
-							uiunitSlot.icon.overrideSprite = this.noneIcon;
-						}
-						uiunitSlot.Deactivate();
-					}
-					else if (uiunitSlot.currentUnitAtSlot == null)
+				{					
+					if (uiunitSlot.currentUnitAtSlot == null)
 					{
 						uiunitSlot.icon.color = global::UnityEngine.Color.white;
-						uiunitSlot.icon.overrideSprite = this.swapIcon;
+						uiunitSlot.icon.overrideSprite = this.noneIcon;
 					}
+					uiunitSlot.Deactivate();
 				}
-			}
+				else if (uiunitSlot.currentUnitAtSlot == null)
+				{
+					uiunitSlot.icon.color = global::UnityEngine.Color.white;
+					uiunitSlot.icon.overrideSprite = this.swapIcon;
+				}
+			}			
 		}
 		if (isImpressive)
 		{
