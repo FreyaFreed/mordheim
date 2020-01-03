@@ -15186,4 +15186,7 @@ Weaponsmith",
     "2323900913" : "Exceptional",
     "3575321170" : "Good",
     "599096527" : "Poor",
-    "1853050948" : "Very Poor",}
+    "1853050948" : "Very Poor",
+	"2467164236" : "Respec",
+	"621821250" : "Respec warrior",
+	"2445178869" : "Are you sure you want to respec {0}? All skill and spell points will be reset and have to be trained at full cost and training time.",}
