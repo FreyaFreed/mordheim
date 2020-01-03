@@ -160,7 +160,6 @@ public class HideoutSkills : global::BaseHideoutUnitState
 			{
 				this.currentUnit.unit.EndLearnSkill(true);
 			}
-			this.currentUnit.unit.EndLearnSkill(true);
 			this.UpdateWheel();
 			global::PandoraSingleton<global::HideoutManager>.Instance.SaveChanges();
 			base.RefreshUnitAttributes();
