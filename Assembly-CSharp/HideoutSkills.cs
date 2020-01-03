@@ -116,7 +116,7 @@ public class HideoutSkills : global::BaseHideoutUnitState
 			global::PandoraSingleton<global::HideoutTabManager>.Instance.button2.SetAction("action", "menu_select_slot", 0, false, null, null);
 			global::PandoraSingleton<global::HideoutTabManager>.Instance.button2.OnAction(null, false, true);
 			base.SetupApplyButton(global::PandoraSingleton<global::HideoutTabManager>.Instance.button3);
-			global::PandoraSingleton<global::HideoutTabManager>.Instance.button4.SetAction("action", "menu_select_slot", 0, false, null, null);
+			global::PandoraSingleton<global::HideoutTabManager>.Instance.button4.SetAction("action", "menu_unit_respec", 0, false, null, null);
 			global::PandoraSingleton<global::HideoutTabManager>.Instance.button4.OnAction(new global::UnityEngine.Events.UnityAction(this.OnRespecButton), false, true);
 			global::PandoraSingleton<global::HideoutTabManager>.Instance.button5.gameObject.SetActive(false);
 			return;
@@ -160,6 +160,7 @@ public class HideoutSkills : global::BaseHideoutUnitState
 			{
 				this.currentUnit.unit.EndLearnSkill(true);
 			}
+			this.currentUnit.unit.EndLearnSkill(true);
 			this.UpdateWheel();
 			global::PandoraSingleton<global::HideoutManager>.Instance.SaveChanges();
 			base.RefreshUnitAttributes();
@@ -294,7 +295,7 @@ public class HideoutSkills : global::BaseHideoutUnitState
 
 	private void OnRespecButton()
 	{
-		global::PandoraSingleton<global::HideoutManager>.Instance.messagePopup.ShowLocalized(global::PandoraSingleton<global::LocalizationManager>.Instance.GetStringById("popup_learn_skill_title"), global::PandoraSingleton<global::LocalizationManager>.Instance.GetStringById("popup_learn_skill_desc", new string[]
+		global::PandoraSingleton<global::HideoutManager>.Instance.messagePopup.ShowLocalized(global::PandoraSingleton<global::LocalizationManager>.Instance.GetStringById("popup_unit_respec_title"), global::PandoraSingleton<global::LocalizationManager>.Instance.GetStringById("popup_unit_respec_desc", new string[]
 		{
 			this.currentUnit.unit.Name
 		}), new global::System.Action<bool>(this.OnRespecPopup), false, false);
