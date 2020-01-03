@@ -5130,7 +5130,7 @@ public class Unit
 				this.UnitSave.passiveSkills.Remove(skillData2.Id);
 				if (skillData2.SkillIdPrerequiste != global::SkillId.NONE)
 				{
-					this.UnitSave.activeSkills.Remove(skillData2.SkillIdPrerequiste);
+					this.UnitSave.passiveSkills.Remove(skillData2.SkillIdPrerequiste);
 				}
 				this.PassiveSkills.RemoveAt(j);
 			}
