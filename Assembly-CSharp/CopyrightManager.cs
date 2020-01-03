@@ -33,6 +33,7 @@ public class CopyrightManager : global::UnityEngine.MonoBehaviour
 			this.movieQueueIdx = this.movieQueue.Length;
 			this.copyrightInfo.SetActive(false);
 		}
+		this.FadeToMainMenu();
 		base.StartCoroutine(this.LoadMainMenu());
 	}
 
