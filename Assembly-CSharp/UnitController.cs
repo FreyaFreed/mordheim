@@ -389,7 +389,7 @@ public class UnitController : global::UnitMenuController, global::IMyrtilus
 				}
 				if (this.GetWarband().IsRoaming())
 				{
-					this.unit.AddEnchantment(global::PandoraSingleton<global::DataFactory>.Instance.InitData<global::ProcMissionRatingData>(1).EnchantmentId, this.unit, false, false, global::AllegianceId.NONE);
+					this.unit.AddEnchantment(global::PandoraSingleton<global::DataFactory>.Instance.InitData<global::ProcMissionRatingData>((PandoraSingleton<MissionStartData>.Instance.CurrentMission.missionSave.ratingId)).EnchantmentId, this.unit, false, false, global::AllegianceId.NONE);
 				}
 				else
 				{
