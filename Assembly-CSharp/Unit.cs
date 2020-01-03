@@ -5138,6 +5138,49 @@ public class Unit
 		this.spentSkillPoints = 0;
 	}
 
+	public void ResetUnitSpells()
+	{
+		for (int i = this.Spells.Count - 1; i >= 0; i--)
+		{
+			global::SkillData skillData = this.Spells[i];
+			if (skillData.SkillIdPrerequiste != global::SkillId.NONE || skillData.SkillQualityId != global::SkillQualityId.MASTER_QUALITY)
+			{
+				this.UnitSave.spells.Remove(skillData.Id);
+				if (skillData.SkillIdPrerequiste != global::SkillId.NONE)
+				{
+					this.UnitSave.spells.Remove(skillData.SkillIdPrerequiste);
+				}
+				this.Spells.RemoveAt(i);
+			}
+		}
+		this.spentSpellPoints = 0;
+	}
+
+	public void ResetAttributes()
+	{
+		this.spentMartialPoints = 0;
+		this.spentMentalPoints = 0;
+		this.spentPhysicalPoints = 0;
+		this.UnitSave.attributes[global::AttributeId.STRENGTH] = 0;
+		this.UnitSave.attributes[global::AttributeId.TOUGHNESS] = 0;
+		this.UnitSave.attributes[global::AttributeId.AGILITY] = 0;
+		this.UnitSave.attributes[global::AttributeId.LEADERSHIP] = 0;
+		this.UnitSave.attributes[global::AttributeId.INTELLIGENCE] = 0;
+		this.UnitSave.attributes[global::AttributeId.ALERTNESS] = 0;
+		this.UnitSave.attributes[global::AttributeId.WEAPON_SKILL] = 0;
+		this.UnitSave.attributes[global::AttributeId.BALLISTIC_SKILL] = 0;
+		this.UnitSave.attributes[global::AttributeId.ACCURACY] = 0;
+		this.attributes[4] = this.GetBaseAttribute(global::AttributeId.STRENGTH);
+		this.attributes[5] = this.GetBaseAttribute(global::AttributeId.TOUGHNESS);
+		this.attributes[7] = this.GetBaseAttribute(global::AttributeId.AGILITY);
+		this.attributes[9] = this.GetBaseAttribute(global::AttributeId.LEADERSHIP);
+		this.attributes[10] = this.GetBaseAttribute(global::AttributeId.INTELLIGENCE);
+		this.attributes[14] = this.GetBaseAttribute(global::AttributeId.ALERTNESS);
+		this.attributes[2] = this.GetBaseAttribute(global::AttributeId.WEAPON_SKILL);
+		this.attributes[3] = this.GetBaseAttribute(global::AttributeId.BALLISTIC_SKILL);
+		this.attributes[15] = this.GetBaseAttribute(global::AttributeId.ACCURACY);
+	}
+
 	public static readonly global::AttributeId[] PhysicalAttributeIds = new global::AttributeId[]
 	{
 		global::AttributeId.STRENGTH,

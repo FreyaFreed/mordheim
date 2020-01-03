@@ -305,6 +305,8 @@ public class HideoutSkills : global::BaseHideoutUnitState
 		if (confirm)
 		{
 			this.currentUnit.unit.ResetUnitSkills();
+			this.currentUnit.unit.ResetUnitSpells();
+			this.currentUnit.unit.ResetAttributes();
 			this.UpdateWheel();
 			global::PandoraSingleton<global::HideoutManager>.Instance.SaveChanges();
 			base.RefreshUnitAttributes();
