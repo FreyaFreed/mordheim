@@ -344,7 +344,7 @@ public class WarbandSwapModule : global::WarbandSlotPlacementModule
 
 	private int GetLinkedImpressiveSlotIndex(int slotIndex)
 	{
-		if (slotIndex >= 20)
+		if (slotIndex >= 12 + this.reserveSlots.Length)
 		{
 			return slotIndex;
 		}
@@ -368,7 +368,7 @@ public class WarbandSwapModule : global::WarbandSlotPlacementModule
 
 	private global::Unit GetLinkedImpressiveSlotUnit(int slotIndex)
 	{
-		if (slotIndex >= 20)
+		if (slotIndex >= 12 + this.reserveSlots.Length)
 		{
 			return null;
 		}
@@ -392,11 +392,10 @@ public class WarbandSwapModule : global::WarbandSlotPlacementModule
 		for (int i = 0; i < this.allSlots.Count; i++)
 		{
 			global::UIUnitSlot uiunitSlot = this.allSlots[i];
-			if (!(uiunitSlot == null))
+			if (!(uiunitSlot == null) && !uiunitSlot.isLocked)
 			{
-				if (!uiunitSlot.isLocked)
+				if (cannotSwapIndex.Contains(i) || (isImpressive && i < 12 + this.reserveSlots.Length) || (fromSlotIndex >= 12 + this.reserveSlots.Length && unitAtWarbandSlot != null && unitAtWarbandSlot.IsImpressive))
 				{
-					if (cannotSwapIndex.Contains(i) || (isImpressive && i < 20) || (fromSlotIndex >= 20 && unitAtWarbandSlot != null && unitAtWarbandSlot.IsImpressive))
 					{
 						if (uiunitSlot.currentUnitAtSlot == null)
 						{
@@ -441,11 +440,11 @@ public class WarbandSwapModule : global::WarbandSlotPlacementModule
 					}
 				}
 			}
+			return;
 		}
-		else
+		if (fromSlotIndex >= 12 + this.reserveSlots.Length && unitAtWarbandSlot != null && unitAtWarbandSlot.IsImpressive)
 		{
 			this.allSlots[fromSlotIndex].icon.color = global::Constant.GetColor(global::ConstantId.COLOR_CYAN);
-			if (fromSlotIndex >= 20 && unitAtWarbandSlot != null && unitAtWarbandSlot.IsImpressive)
 			{
 				for (int k = 0; k < this.allImpressiveSlots.Count; k++)
 				{
@@ -461,7 +460,7 @@ public class WarbandSwapModule : global::WarbandSlotPlacementModule
 					}
 				}
 			}
-			else
+			return;
 			{
 				for (int l = 0; l < this.allImpressiveSlots.Count; l++)
 				{
@@ -538,6 +537,28 @@ public class WarbandSwapModule : global::WarbandSlotPlacementModule
 		this.CheckCanLaunchMission();
 	}
 
+	public new void Awake()
+	{
+		float num = 0.2f;
+		if (this.reserveSlots != null && this.reserveSlots.Length == 8 && this.reserveImpressiveSlots != null && this.reserveImpressiveSlots.Length == 4)
+		{
+			global::UnityEngine.Transform parent = this.reserveImpressiveSlots[3].gameObject.transform.parent;
+			if (parent)
+			{
+				parent = parent.parent;
+				if (parent && parent.parent)
+				{
+					global::UnityEngine.Vector3 a = parent.localPosition - this.reserveImpressiveSlots[2].gameObject.transform.parent.parent.localPosition;
+					this.reserveImpressiveSlots[1].gameObject.transform.parent.parent.localPosition -= a / 2f;
+					this.reserveImpressiveSlots[0].gameObject.transform.parent.parent.localPosition -= a * num;
+					this.reserveImpressiveSlots[2].gameObject.transform.parent.parent.localPosition += this.reserveImpressiveSlots[1].gameObject.transform.parent.parent.localPosition - this.reserveImpressiveSlots[2].gameObject.transform.parent.parent.localPosition + (this.reserveImpressiveSlots[1].gameObject.transform.parent.localPosition - this.reserveImpressiveSlots[2].gameObject.transform.parent.localPosition) + (this.reserveImpressiveSlots[1].gameObject.transform.localPosition - this.reserveImpressiveSlots[2].gameObject.transform.localPosition) + a * (num + 0.5f);
+					parent.localPosition -= a * (num + 1f);
+					base.CreateAdditionalReserveSlotGroup(parent, parent.localPosition + a * (num + 0.5f));
+					base.CreateAdditionalReserveSlotGroup(parent, parent.localPosition + a * (2f * num + 1f));
+				}
+			}
+		}
+	}
 	public global::ButtonGroup btnLaunch;
 
 	public global::ButtonGroup btnLaunchDeploy;

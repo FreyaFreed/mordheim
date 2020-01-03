@@ -70,7 +70,7 @@ public class HideoutWarband : global::WarbandManagementBaseState
 		{
 			global::UnitMenuController unitMenuController = unitCtrlrs[j];
 			int warbandSlotIndex = unitMenuController.unit.UnitSave.warbandSlotIndex;
-			if (warbandSlotIndex >= 0 && warbandSlotIndex < 20)
+			if (warbandSlotIndex >= 0 && warbandSlotIndex < this.nodeGroup.nodes.Count)
 			{
 				if (this.nodeGroup.nodes[warbandSlotIndex].IsOccupied())
 				{

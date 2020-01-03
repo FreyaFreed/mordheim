@@ -7,6 +7,42 @@ public class MenuNodeGroup : global::UnityEngine.MonoBehaviour
 	protected virtual void Awake()
 	{
 		this.isOn = false;
+		global::UnityEngine.GameObject gameObject = base.gameObject;
+		global::UnityEngine.Transform transform = gameObject.transform;
+		if (transform.parent && gameObject.name.StartsWith("menu_warband_environment") && this.nodes.Count == 20)
+		{
+			global::UnityEngine.Vector3 vector = this.nodes[10].gameObject.transform.localPosition - this.nodes[7].gameObject.transform.localPosition;
+			global::UnityEngine.GameObject gameObject2 = this.nodes[19].gameObject;
+			global::UnityEngine.Transform transform2 = gameObject2.transform;
+			global::UnityEngine.GameObject gameObject3 = global::UnityEngine.Object.Instantiate<global::UnityEngine.GameObject>(gameObject2);
+			global::UnityEngine.Transform transform3 = gameObject3.transform;
+			transform3.parent = transform;
+			transform3.localScale = transform2.localScale;
+			transform3.localRotation = transform2.localRotation;
+			transform3.localPosition = (this.nodes[13].gameObject.transform.localPosition + this.nodes[14].gameObject.transform.localPosition + vector) / 2f;
+			this.nodes.Add(gameObject3.GetComponent<global::MenuNode>());
+			gameObject3 = global::UnityEngine.Object.Instantiate<global::UnityEngine.GameObject>(gameObject2);
+			global::UnityEngine.Transform transform4 = gameObject3.transform;
+			transform4.parent = transform;
+			transform4.localScale = transform2.localScale;
+			transform4.localRotation = transform2.localRotation;
+			transform4.localPosition = (this.nodes[15].gameObject.transform.localPosition + this.nodes[16].gameObject.transform.localPosition + vector) / 2f;
+			this.nodes.Add(gameObject3.GetComponent<global::MenuNode>());
+			gameObject3 = global::UnityEngine.Object.Instantiate<global::UnityEngine.GameObject>(gameObject2);
+			global::UnityEngine.Transform transform5 = gameObject3.transform;
+			transform5.parent = transform;
+			transform5.localScale = transform2.localScale;
+			transform5.localRotation = transform2.localRotation;
+			transform5.localPosition = this.nodes[17].gameObject.transform.localPosition + (this.nodes[18].gameObject.transform.localPosition - this.nodes[17].gameObject.transform.localPosition) * 0.7f + vector / 2f;
+			this.nodes.Add(gameObject3.GetComponent<global::MenuNode>());
+			gameObject3 = global::UnityEngine.Object.Instantiate<global::UnityEngine.GameObject>(gameObject2);
+			global::UnityEngine.Transform transform6 = gameObject3.transform;
+			transform6.parent = transform;
+			transform6.localScale = transform2.localScale;
+			transform6.localRotation = transform2.localRotation;
+			transform6.localPosition = transform2.localPosition + (this.nodes[8].gameObject.transform.localPosition - this.nodes[7].gameObject.transform.localPosition) + (this.nodes[11].gameObject.transform.localPosition - this.nodes[8].gameObject.transform.localPosition) / 2f;
+			this.nodes.Add(gameObject3.GetComponent<global::MenuNode>());
+		}
 	}
 
 	public void Activate(global::MenuNodeDelegateNode select, global::MenuNodeDelegateNode unSelect, global::MenuNodeDelegateNode confirm, global::PandoraInput.InputLayer workingLayer, bool unselectOverOut = true)
