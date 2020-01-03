@@ -107,6 +107,38 @@ public class WarbandManagementModule : global::WarbandSlotPlacementModule
 		this.onUnitConfirmed(slotIndex, unit, isImpressive);
 	}
 
+	public new void Awake()
+	{
+		if (this.reserveSlots != null && this.reserveSlots.Length == 8 && this.reserveImpressiveSlots != null && this.reserveImpressiveSlots.Length == 4)
+		{
+			global::UnityEngine.Transform parent = this.reserveImpressiveSlots[3].gameObject.transform.parent;
+			if (parent)
+			{
+				parent = parent.parent;
+				if (parent && parent.parent)
+				{
+					base.CreateAdditionalReserveSlotGroup(parent, parent.localPosition + new global::UnityEngine.Vector3(0f, -150f, 0f));
+					base.CreateAdditionalReserveSlotGroup(parent, parent.localPosition + new global::UnityEngine.Vector3(0f, -300f, 0f));
+					this.swap.gameObject.transform.localPosition += new global::UnityEngine.Vector3(-390f, 140f, 0f);
+					parent.parent.localPosition += new global::UnityEngine.Vector3(0f, 120f, 0f);
+					parent = this.hiredSwords.gameObject.transform.parent;
+					if (parent)
+					{
+						parent = parent.parent;
+						if (parent)
+						{
+							parent = parent.parent;
+							if (parent)
+							{
+								parent.localPosition += new global::UnityEngine.Vector3(-1600f, 0f, 0f);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
 	public global::ToggleEffects swap;
 
 	public global::ToggleEffects hiredSwords;

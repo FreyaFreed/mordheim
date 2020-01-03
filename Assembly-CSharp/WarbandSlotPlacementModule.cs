@@ -192,9 +192,9 @@ public abstract class WarbandSlotPlacementModule : global::UIModule
 		int num = this.currentWarband.GetNbMaxActiveSlots() + this.currentWarband.GetNbMaxReserveSlot();
 		for (int i = 0; i < num; i++)
 		{
-			if (!this.unitsPosition.Contains(20 + i))
+			if (!this.unitsPosition.Contains(12 + this.reserveSlots.Length + i))
 			{
-				return 20 + i;
+				return 12 + this.reserveSlots.Length + i;
 			}
 		}
 		return -1;
@@ -205,6 +205,25 @@ public abstract class WarbandSlotPlacementModule : global::UIModule
 	protected abstract void OnUnitSlotSelected(int slotIndex, global::Unit unit, bool isImpressive);
 
 	protected abstract void OnUnitSlotConfirmed(int slotIndex, global::Unit unit, bool isImpressive);
+
+	protected void CreateAdditionalReserveSlotGroup(global::UnityEngine.Transform transformtoinstantiate, global::UnityEngine.Vector3 newlocalposition)
+	{
+		global::UnityEngine.GameObject gameObject = global::UnityEngine.Object.Instantiate<global::UnityEngine.GameObject>(transformtoinstantiate.gameObject);
+		global::UnityEngine.Transform transform = gameObject.transform;
+		transform.parent = transformtoinstantiate.parent;
+		transform.localScale = transformtoinstantiate.localScale;
+		transform.localRotation = transformtoinstantiate.localRotation;
+		transform.localPosition = newlocalposition;
+		global::UIUnitSlot[] componentsInChildren = gameObject.GetComponentsInChildren<global::UIUnitSlot>(true);
+		if (componentsInChildren.Length == 3)
+		{
+			global::System.Array.Resize<global::UIUnitSlot>(ref this.reserveImpressiveSlots, this.reserveImpressiveSlots.Length + 1);
+			this.reserveImpressiveSlots[this.reserveImpressiveSlots.Length - 1] = componentsInChildren[0];
+			global::System.Array.Resize<global::UIUnitSlot>(ref this.reserveSlots, this.reserveSlots.Length + 2);
+			this.reserveSlots[this.reserveSlots.Length - 2] = componentsInChildren[1];
+			this.reserveSlots[this.reserveSlots.Length - 1] = componentsInChildren[2];
+		}
+	}
 
 	private global::SkillsShop skillsShop = new global::SkillsShop();
 
