@@ -131,6 +131,18 @@ public class SkillsWheelModule : global::UIModule
 			this.passiveSkills[currentSkillIndex].toggle.SetSelected(false);
 		}
 	}
+	public new void Awake()
+	{
+		if (this.passiveSkills.Count == 5)
+		{
+			GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(this.passiveSkills[4].gameObject);
+			Transform transform = gameObject.transform;
+			transform.parent = this.passiveSkills[4].gameObject.transform.parent;
+			transform.localScale = this.passiveSkills[4].gameObject.transform.localScale;
+			transform.localPosition = this.passiveSkills[4].gameObject.transform.localPosition + new Vector3(-60f, -60f, 0f);
+			this.passiveSkills.Add(gameObject.GetComponent<SkillWheelSlot>());
+		}
+	}
 
 	public global::UnityEngine.UI.Text passiveTitle;
 
