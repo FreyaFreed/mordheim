@@ -128,7 +128,7 @@ public class HideoutWarband : global::WarbandManagementBaseState
 		{
 			global::PandoraSingleton<global::HideoutManager>.Instance.StateMachine.ChangeState(0);
 		}, false, true);
-		global::PandoraSingleton<global::HideoutTabManager>.Instance.button2.gameObject.SetActive(false);
+		global::PandoraSingleton<global::HideoutTabManager>.Instance.button2.gameObject.SetActive(true);
 		global::PandoraSingleton<global::HideoutTabManager>.Instance.button3.gameObject.SetActive(false);
 		global::PandoraSingleton<global::HideoutTabManager>.Instance.button4.gameObject.SetActive(false);
 	}
@@ -196,7 +196,7 @@ public class HideoutWarband : global::WarbandManagementBaseState
 		{
 			global::PandoraSingleton<global::HideoutTabManager>.Instance.GetModuleLeft<global::AvailableUnitsModule>(global::ModuleId.AVAILABLE_UNITS).Set(global::PandoraSingleton<global::HideoutManager>.Instance.WarbandCtrlr.GetHireableUnits(slotIndex, isImpressive), false);
 		}
-		global::PandoraSingleton<global::HideoutTabManager>.Instance.button2.gameObject.SetActive(false);
+		global::PandoraSingleton<global::HideoutTabManager>.Instance.button2.gameObject.SetActive(true);
 		global::PandoraSingleton<global::HideoutTabManager>.Instance.button3.gameObject.SetActive(false);
 		global::PandoraSingleton<global::HideoutTabManager>.Instance.button4.gameObject.SetActive(false);
 	}
@@ -225,7 +225,7 @@ public class HideoutWarband : global::WarbandManagementBaseState
 			global::PandoraSingleton<global::HideoutManager>.Instance.StateMachine.ChangeState(0);
 		}, false, true);
 		global::PandoraSingleton<global::HideoutTabManager>.Instance.GetModuleLeft<global::AvailableUnitsModule>(global::ModuleId.AVAILABLE_UNITS).Set(global::PandoraSingleton<global::HideoutManager>.Instance.WarbandCtrlr.GetHiredSwordUnits(), true);
-		global::PandoraSingleton<global::HideoutTabManager>.Instance.button2.gameObject.SetActive(false);
+		global::PandoraSingleton<global::HideoutTabManager>.Instance.button2.gameObject.SetActive(true);
 		global::PandoraSingleton<global::HideoutTabManager>.Instance.button3.gameObject.SetActive(false);
 		global::PandoraSingleton<global::HideoutTabManager>.Instance.button4.gameObject.SetActive(false);
 	}
@@ -238,7 +238,7 @@ public class HideoutWarband : global::WarbandManagementBaseState
 		{
 			global::PandoraSingleton<global::HideoutManager>.Instance.StateMachine.ChangeState(0);
 		}, false, true);
-		global::PandoraSingleton<global::HideoutTabManager>.Instance.button2.gameObject.SetActive(false);
+		global::PandoraSingleton<global::HideoutTabManager>.Instance.button2.gameObject.SetActive(true);
 		global::PandoraSingleton<global::HideoutTabManager>.Instance.button3.gameObject.SetActive(false);
 	}
 
