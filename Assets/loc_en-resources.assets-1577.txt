@@ -15186,4 +15186,7 @@ Weaponsmith",
     "2323900913" : "Exceptional",
     "3575321170" : "Good",
     "599096527" : "Poor",
-    "1853050948" : "Very Poor",}
+    "1853050948" : "Very Poor",
+	"1861762795" : "Unequip All",
+	"538327253" : "Unequip all warriors",
+	"56824767" : "Are you sure you want to unequip all warriors? All items will be returned to the warband inventory.",}

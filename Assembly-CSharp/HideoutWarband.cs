@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class HideoutWarband : global::WarbandManagementBaseState
 {
@@ -41,6 +42,8 @@ public class HideoutWarband : global::WarbandManagementBaseState
 		this.PlaceUnits();
 		base.Enter(iFrom);
 		this.treasuryModule = global::PandoraSingleton<global::HideoutTabManager>.Instance.GetModuleRight<global::TreasuryModule>(global::ModuleId.TREASURY);
+		global::PandoraSingleton<global::HideoutTabManager>.Instance.button2.SetAction("action", "hideout_unequip_warband", 0, false, null, null);
+		global::PandoraSingleton<global::HideoutTabManager>.Instance.button2.OnAction(new global::UnityEngine.Events.UnityAction(this.UnequipAllUnits), false, true);
 	}
 
 	public override void Exit(int iTo)
@@ -267,6 +270,19 @@ public class HideoutWarband : global::WarbandManagementBaseState
 	{
 		this.hideoutMngr.currentUnit = global::PandoraSingleton<global::HideoutManager>.Instance.GetUnitMenuController(unit);
 		this.hideoutMngr.StateMachine.ChangeState(15);
+	}
+
+	private void UnequipAllUnits()
+	{
+		global::PandoraSingleton<global::HideoutManager>.Instance.messagePopup.ShowLocalized(global::PandoraSingleton<global::LocalizationManager>.Instance.GetStringById("hideout_unequip_all"), global::PandoraSingleton<global::LocalizationManager>.Instance.GetStringById("hideout_unequip_all_desc"), new global::System.Action<bool>(this.OnUnequipAllUnitsDialog), false, false);
+	}
+
+	private void OnUnequipAllUnitsDialog(bool confirm)
+	{
+		if (confirm)
+		{
+			global::PandoraSingleton<global::HideoutManager>.Instance.WarbandCtrlr.Warband.UnequipAllUnits();
+		}
 	}
 
 	private global::MenuNodeGroup nodeGroup;

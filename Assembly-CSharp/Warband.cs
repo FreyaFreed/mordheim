@@ -1427,6 +1427,15 @@ public class Warband
 		return num;
 	}
 
+	public void UnequipAllUnits()
+	{
+		foreach (global::Unit unit in this.Units)
+		{
+			global::System.Collections.Generic.List<global::Item> items = unit.UnequipAllItems();
+			global::PandoraSingleton<global::HideoutManager>.Instance.WarbandChest.AddItems(items);
+		}
+	}
+
 	private static readonly global::UnitTypeId[] OutsidersTypeIds = new global::UnitTypeId[]
 	{
 		global::UnitTypeId.HENCHMEN,
