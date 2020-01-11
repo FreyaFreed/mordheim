@@ -1075,6 +1075,7 @@ public class OptionsManager : global::UnityEngine.MonoBehaviour
 				this.CreateControlMappingEntry(stringById4, inputAction.id, true, "game_input", this.controlsList, true);
 			}
 		}
+		this.CreateControlMappingEntry("Show CombatCirlce", 31, true, "game_input", this.controlsList, false);
 		this.SetupControlsListNavig(this.controlsList);
 		if (base.gameObject.activeInHierarchy)
 		{
