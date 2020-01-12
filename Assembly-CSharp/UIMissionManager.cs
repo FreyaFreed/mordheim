@@ -267,6 +267,10 @@ public class UIMissionManager : global::PandoraSingleton<global::UIMissionManage
 		{
 			this.ShowChat();
 		}
+		if (Input.GetKeyUp(KeyCode.CapsLock) || Input.GetKeyUp(KeyCode.F2))
+		{
+			this.CurrentUnitController.SetCombatCircle2(this.CurrentUnitController, true);
+		}
 		if (global::PandoraSingleton<global::PandoraInput>.Instance.GetKeyUp("show_action_log", 0) || global::PandoraSingleton<global::PandoraInput>.Instance.GetKeyUp("show_action_log", 7))
 		{
 			this.ShowActionLog();
